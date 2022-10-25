@@ -1,0 +1,17 @@
+Here I put the pipeline commands to be run in the command window
+
+dvc run -n prepare \
+        -d src/prepare.py -d data/raw \
+        -o data/prepared/train.csv -o data/prepared/test.csv \
+        python src/prepare.py
+
+
+dvc run -n train \
+        -d src/train.py -d data/prepared/train.csv \
+        -o model/model.joblib \
+        python src/train.py
+
+dvc run -n evaluate \
+        -d src/evaluate.py -d model/model.joblib -d data/prepared/test.csv \
+        -M metrics/accuracy.json \
+        python src/evaluate.py
