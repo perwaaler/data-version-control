@@ -20,8 +20,8 @@ def load_labels(data_frame, column_name):
 
 
 def preprocess(image):
-    resized = resize(image, (100, 100, 3))
-    reshaped = resized.reshape((1, 30000))
+    resized = resize(image, (90, 90, 3))
+    reshaped = resized.reshape((1, 90*90*3))
     return reshaped
 
 
